@@ -1,5 +1,7 @@
 package tn.esprit.rh.achat;
 
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -20,6 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
+
 @RunWith(MockitoJUnitRunner.class)
 public class CategorieProduitTest {
 	
@@ -34,14 +37,14 @@ public class CategorieProduitTest {
     @Rollback(value = false)
     public void whenSaveUser_shouldReturnProduct(){
         CategorieProduit categorieProduit = new CategorieProduit();
-        categorieProduit("Test Code");
+        categorieProduit.setCodeCategorie("Test Code");
         when(categorieProduitRepository.save(ArgumentMatchers.any(CategorieProduit.class))).thenReturn(categorieProduit);
         CategorieProduit created = categorieProduitService.addCategorieProduit(categorieProduit);
         assertThat(created.getCodeCategorie()).isSameAs(categorieProduit.getCodeCategorie());
         verify(categorieProduitRepository).save(categorieProduit);
     }
-
     @Test
+    @Rollback(value = false)
     public void shouldReturnAllProducts(){
         List<CategorieProduit> categorieProduitList = new ArrayList<>();
         categorieProduitList.add( new CategorieProduit());
@@ -50,8 +53,8 @@ public class CategorieProduitTest {
         assertEquals(expected, categorieProduitList);
         verify(categorieProduitRepository).findAll();
     }
-
     @Test
+    @Rollback(value = false)
     public void whenGivenId_shouldDeleteProduct_ifFound(){
         CategorieProduit categorieProduit = new CategorieProduit();
         categorieProduit.setIdCategorieProduit(1L);
@@ -73,7 +76,6 @@ public class CategorieProduitTest {
         given(categorieProduitRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
         categorieProduitService.deleteCategorieProduit(categorieProduit.getIdCategorieProduit());
     }
-
     @Test
     public void whenGivenId_shouldUpdateProduct_ifFound() {
         CategorieProduit categorieProduit = new CategorieProduit();
@@ -87,27 +89,6 @@ public class CategorieProduitTest {
         categorieProduitService.updateCategorieProduit(newCategorieProduit);
         verify(categorieProduitRepository).save(newCategorieProduit);
     }
-
-    /*
-
-    -----------> must review to see why it doesn't work
-
-    @Test(expected = RuntimeException.class)
-    public void should_throw_exception_when_product_doesnt_exist() {
-        CategorieProduit categorieProduit = new CategorieProduit();
-        categorieProduit.setIdCategorieProduit(89L);
-        categorieProduit.setLibelleCategorie("Test Libelle");
-        categorieProduit.setCodeCategorie("Test Code");
-
-        CategorieProduit newCategorieProduit = new CategorieProduit();
-        newCategorieProduit.setIdCategorieProduit(99L);
-        categorieProduit.setLibelleCategorie("New Test Libelle");
-
-        given(categorieProduitRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
-        categorieProduitService.updateCategorieProduit(newCategorieProduit);
-    }
-
-     */
     @Test
     public void whenGivenId_shouldReturnProduct_ifFound() {
         CategorieProduit categorieProduit = new CategorieProduit();
@@ -122,7 +103,6 @@ public class CategorieProduitTest {
         assertThat(expected).isSameAs(categorieProduit);
         verify(categorieProduitRepository).findById(categorieProduit.getIdCategorieProduit());
     }
-
     @Test(expected = RuntimeException.class)
     public void should_throw_exception_when_Product_doesnt_exist() {
         CategorieProduit categorieProduit = new CategorieProduit();
@@ -133,5 +113,12 @@ public class CategorieProduitTest {
         given(categorieProduitRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
         categorieProduitService.retrieveCategorieProduit(categorieProduit.getIdCategorieProduit());
     }
+
+	
+	
+	
+	
+	
+	
 
 }
