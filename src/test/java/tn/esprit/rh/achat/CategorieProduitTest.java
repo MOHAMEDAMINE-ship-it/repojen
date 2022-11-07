@@ -35,7 +35,7 @@ public class CategorieProduitTest {
 
     @Test
     @Rollback(value = false)
-    public void whenSaveUser_shouldReturnProduct(){
+    public void whenSavecat_shouldReturnProduct(){
         CategorieProduit categorieProduit = new CategorieProduit();
         categorieProduit.setCodeCategorie("Test Code");
         when(categorieProduitRepository.save(ArgumentMatchers.any(CategorieProduit.class))).thenReturn(categorieProduit);
