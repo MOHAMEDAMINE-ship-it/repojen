@@ -34,17 +34,8 @@ public class CategorieProduit implements Serializable {
 	
 	
 	
-	public CategorieProduit( String codeCategorie, String libelleCategorie
-			) {
-		super();
 	
-		this.codeCategorie = codeCategorie;
-		this.libelleCategorie = libelleCategorie;
-
-	}
-	public CategorieProduit() {
-		
-	}
+	
 	public Long getIdCategorieProduit() {
 		return idCategorieProduit;
 	}
