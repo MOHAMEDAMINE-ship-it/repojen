@@ -134,12 +134,12 @@
 	</build>
 		<distributionManagement>
 		<repository>
-			<id>local-nexus</id>
-			<layout>default</layout>
+			<id>achat</id>
+			
 			<url>http://192.168.1.13:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>local-nexus</id>
+			<id>achat</id>
                         <layout>default</layout>
 			<url>http://192.168.1.13:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
