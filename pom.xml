@@ -100,37 +100,29 @@
 			<url>http://192.168.1.13:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-<build>
-  <plugins>
-    <plugin>
+	<build>
+		<plugins>
+	
+			<plugin>
+			 
     <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-enforcer-plugin</artifactId>
-    <version>3.0.0-M2</version>
-    <executions>
-      <execution>
-      <id>enforce-versions</id>
-      <goals>
-        <goal>enforce</goal>
-      </goals>
-      <configuration>
-        <rules>
-          <requireMavenVersion>
-            <version>3.2.1</version>
-          </requireMavenVersion>
-        <excludes>
+    <artifactId>maven-site-plugin</artifactId>
+    <version>3.0</version>
+    <configuration>
+    <configuration>
+					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-         
-        </rules>
-      </configuration>
-      </execution>
-    </executions>
-    </plugin>
-  </plugins>
-</build>
+				</configuration>
+    </configuration>
+ </plugin>
+				</plugins>
+	
+	</build>
+	
 	
 
 
